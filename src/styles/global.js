@@ -26,8 +26,8 @@ export default createGlobalStyle`
     body {
         width: 100%;
         height: 100vh;
-        /* background-color: #F0F2F5; */
-        background-color: #333;
+        background-color: #F0F2F5;
+        /* background-color: #333; */
         color: var(--color-default);
         font-size: 100%;
         font-family: var(--font-default);

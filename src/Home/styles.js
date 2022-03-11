@@ -35,3 +35,11 @@ export const Cards = styled.div`
   display: flex;
   gap: 2rem;
 `;
+
+export const TransactionContainer = styled.div`
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;

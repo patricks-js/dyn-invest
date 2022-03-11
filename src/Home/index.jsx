@@ -1,4 +1,4 @@
-import { Container, Cards } from "./styles";
+import { Container, Cards, TransactionContainer } from "./styles";
 import logo from "../assets/images/logo.svg";
 
 import { CardValue } from "../components/CardValue";
@@ -23,19 +23,24 @@ const Home = () => {
       </Cards>
 
       <div>
-        <Button event={() => setActiveModal(true)}>+ Nova transação</Button>
+        <Button event={() => setActiveModal(true)}>+ New Transaction</Button>
       </div>
 
       <DescriptionTitles />
+      <TransactionContainer>
+      
       {
         // Validation
       }
+
       <Transaction
         descriptionText="First"
         valueText="500"
         dateText="12/05/2015"
         valueColor="income"
       />
+      </TransactionContainer>
+      
       {activeModal && <Modal states={activeModal} setStates={setActiveModal} />}
     </Container>
   );

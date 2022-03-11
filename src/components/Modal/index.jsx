@@ -11,7 +11,7 @@ export const Modal = ({ setStates }) => {
       <Content>
         <h2>New Transaction</h2>
         <Input placeholder={"Description"} type="text" />
-        <Input placeholder={"0.00"} type="number" />
+        <Input placeholder={"R$ 0.00"} type="number" />
         <Input type="date" />
         <div>
           <Button

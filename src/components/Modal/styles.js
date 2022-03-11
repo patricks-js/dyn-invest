@@ -4,7 +4,7 @@ export const Container = styled.div`
     width: 100%;
     background-color: var(--shadow);
     height: 100vh;
-    position: absolute;
+    position: fixed;
 `
 
 export const Content = styled.div`
@@ -13,7 +13,6 @@ export const Content = styled.div`
 
   background-color: #f0f2f5;
 
-  box-shadow: var(--box-shadow);
   border-radius: 5px;
 
   position: absolute;
