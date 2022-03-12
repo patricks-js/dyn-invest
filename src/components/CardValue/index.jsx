@@ -7,23 +7,46 @@ import money from "../../assets/images/money.svg";
 export const CardValue = ({
   text,
   totalValue,
-  incomeImg,
-  expenseImg,
-  moneyImg,
-  color
+  typeCard,
+  color,
+  moneyValue
 }) => {
+
+  const hundleTypeCard = (typeCard) => {
+    switch (typeCard) {
+      case "income":
+        return <p> R$ <span>{moneyValue}</span></p>
+
+      case "expense":
+        return <p> R$ <span>{moneyValue}</span></p>
+
+      default:
+        return <p>R$ <span>{moneyValue}</span></p>
+
+    }
+  };
+
+  const hundleImage = (typeImage) => {
+    switch (typeImage) {
+      case "income":
+        return <img src={input} alt="" />;
+      case "expense":
+        return <img src={output} alt="" />;
+      default:
+        return <img src={money} alt="" />;
+    }
+  };
+
   return (
     <Container totalValue={totalValue}>
       <HeaderCard>
         <Title total={totalValue} color={color}>
           {text}
         </Title>
-        {(incomeImg && <img src={input} alt="" />) ||
-          (expenseImg && <img src={output} alt="" />) ||
-          (moneyImg && <img src={money} alt="" />)}
+        {hundleImage(typeCard)}
       </HeaderCard>
-      <Values total={totalValue}>
-        <p>R$ <span>1000</span>,00</p>
+      <Values total={totalValue} typeCard={typeCard}>
+        {hundleTypeCard(typeCard)}
       </Values>
     </Container>
   );

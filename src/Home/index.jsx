@@ -1,15 +1,23 @@
+// Context
+import { useContext, useEffect } from "react";
+import { BudgetContext } from "../Context/BudgetContext";
+import { ModalContext } from "../Context/ModalContext";
+
+// Styles and Assets
 import { Container, Cards, TransactionContainer } from "./styles";
 import logo from "../assets/images/logo.svg";
 
+// Components
 import { CardValue } from "../components/CardValue";
 import { Transaction } from "../components/Transaction";
 import { DescriptionTitles } from "../components/DescriptionTitles";
-import { Modal } from "../components/Modal";
 import { Button } from "../components/Button";
-import { useState } from "react";
+import { Modal } from "../components/Modal";
 
 const Home = () => {
-  const [activeModal, setActiveModal] = useState(false);
+  const { setVisibilityModal, visibilityModal } = useContext(ModalContext);
+
+  const { money, expense, total, description } = useContext(BudgetContext);
 
   return (
     <Container>
@@ -17,31 +25,48 @@ const Home = () => {
         <img src={logo} alt="" />
       </header>
       <Cards>
-        <CardValue incomeImg incomeColor text="Income" color="incomeColor" />
-        <CardValue expenseImg expenseColor text="Expense" />
-        <CardValue moneyImg totalValue text="Total" color="totalColor" />
+        <CardValue
+          incomeColor
+          text="Income"
+          color="incomeColor"
+          typeCard="income"
+          moneyValue={money}
+        />
+        <CardValue
+          expenseColor
+          text="Expense"
+          typeCard="expense"
+          moneyValue={expense}
+        />
+        <CardValue
+          totalValue
+          text="Total"
+          color="totalColor"
+          moneyValue={total}
+        />
       </Cards>
 
       <div>
-        <Button event={() => setActiveModal(true)}>+ New Transaction</Button>
+        <Button event={() => setVisibilityModal(true)}>
+          + New Transaction
+        </Button>
       </div>
+
+      {visibilityModal && <Modal />}
 
       <DescriptionTitles />
       <TransactionContainer>
-      
-      {
-        // Validation
-      }
-
-      <Transaction
-        descriptionText="First"
-        valueText="500"
-        dateText="12/05/2015"
-        valueColor="income"
-      />
+        {/* {money ? (
+          <Transaction
+            descriptionText="First"
+            valueText="500"
+            dateText="12/05/2015"
+            valueColor="income"
+          />
+        ) : (
+            <p>N</p>
+        )} */}
       </TransactionContainer>
-      
-      {activeModal && <Modal states={activeModal} setStates={setActiveModal} />}
     </Container>
   );
 };
