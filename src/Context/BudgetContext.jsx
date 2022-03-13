@@ -12,9 +12,13 @@ export const BudgetContextProvider = ({ children }) => {
 
   const [description, setDescription] = useState("");
 
-  const [datas, setDatas] = useState([])
+  const [date, setDate] = useState("");
 
-  const url = "http://localhost:5000/transaction"
+  const [datas, setDatas] = useState([]);
+
+  const [results, setResults] = useState([]);
+
+  const url = "http://localhost:5000/transaction";
 
   return (
     <BudgetContext.Provider
@@ -27,9 +31,13 @@ export const BudgetContextProvider = ({ children }) => {
         setTotal,
         description,
         setDescription,
-        url,
         datas,
-        setDatas
+        setDatas,
+        date,
+        setDate,
+        results,
+        setResults,
+        url,
       }}
     >
       <ModalContextProvider>{children}</ModalContextProvider>

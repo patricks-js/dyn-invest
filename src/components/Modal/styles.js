@@ -7,7 +7,7 @@ export const Container = styled.div`
     position: fixed;
 `
 
-export const Content = styled.div`
+export const Content = styled.form`
   width: 35.5rem;
   height: 21.4375rem;
 

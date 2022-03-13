@@ -18,14 +18,23 @@ import axios from "axios";
 const Home = () => {
   const { setVisibilityModal, visibilityModal } = useContext(ModalContext);
 
-  const { money, expense, total, url, setDatas, datas } =
-    useContext(BudgetContext);
+  const {
+    money,
+    expense,
+    total,
+    url,
+    setResults,
+    results,
+    datas,
+    date,
+    description,
+  } = useContext(BudgetContext);
 
   // Request api
 
   useEffect(async () => {
     const { data } = await axios.get(url);
-    setDatas(data);
+    await setResults(data);
   }, [total]);
 
   return (
@@ -65,14 +74,14 @@ const Home = () => {
 
       <DescriptionTitles />
       <TransactionContainer>
-        {datas ? (
-          datas.map((data) => (
+        {results ? (
+          results.map((result) => (
             <Transaction
-              key={data.id}
-              descriptionText={data.description}
-              valueText={data.value}
-              dateText={data.date}
-              valueColor={data.typeValue}
+              key={result.id}
+              descriptionText={result.description}
+              valueText={result.value}
+              dateText={result.date}
+              valueColor={result.typeValue}
             />
           ))
         ) : (
