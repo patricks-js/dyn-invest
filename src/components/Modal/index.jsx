@@ -46,6 +46,10 @@ export const Modal = () => {
       setDescription((prev) => prev + description)
   }
 
+  function setDateValue(e) {
+      let date = e.target.value
+  }
+
   return (
     <Container>
       <Content>
@@ -56,7 +60,7 @@ export const Modal = () => {
           type="number"
           event={(e) => setMoneyValue(e)}
         />
-        <Input type="date" />
+        <Input type="date" event={(e) => setDateValue(e)}/>
         <div>
           <Button event={closeModal}>Cancelar</Button>
           <Button event={salveMoney}>Salvar</Button>

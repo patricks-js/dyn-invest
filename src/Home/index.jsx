@@ -13,11 +13,20 @@ import { Transaction } from "../components/Transaction";
 import { DescriptionTitles } from "../components/DescriptionTitles";
 import { Button } from "../components/Button";
 import { Modal } from "../components/Modal";
+import axios from "axios";
 
 const Home = () => {
   const { setVisibilityModal, visibilityModal } = useContext(ModalContext);
 
-  const { money, expense, total, description } = useContext(BudgetContext);
+  const { money, expense, total, url, setDatas, datas } =
+    useContext(BudgetContext);
+
+  // Request api
+
+  useEffect(async () => {
+    const { data } = await axios.get(url);
+    setDatas(data);
+  }, [total]);
 
   return (
     <Container>
@@ -56,16 +65,19 @@ const Home = () => {
 
       <DescriptionTitles />
       <TransactionContainer>
-        {/* {money ? (
-          <Transaction
-            descriptionText="First"
-            valueText="500"
-            dateText="12/05/2015"
-            valueColor="income"
-          />
+        {datas ? (
+          datas.map((data) => (
+            <Transaction
+              key={data.id}
+              descriptionText={data.description}
+              valueText={data.value}
+              dateText={data.date}
+              valueColor={data.typeValue}
+            />
+          ))
         ) : (
-            <p>N</p>
-        )} */}
+          <p>Nenhum registro</p>
+        )}
       </TransactionContainer>
     </Container>
   );

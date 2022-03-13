@@ -29,7 +29,7 @@ const hundleColor = (color) => {
   switch (color) {
     case "income":
       return "var(--color-income)  ";
-    case "expenses":
+    case "expense":
       return "var(--color-expense)";
   }
 };
@@ -37,4 +37,5 @@ const hundleColor = (color) => {
 export const Value = styled.p`
   color: ${({ color }) => hundleColor(color)};
 `;
+
 export const Date = styled.p``;

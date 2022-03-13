@@ -12,6 +12,10 @@ export const BudgetContextProvider = ({ children }) => {
 
   const [description, setDescription] = useState("");
 
+  const [datas, setDatas] = useState([])
+
+  const url = "http://localhost:5000/transaction"
+
   return (
     <BudgetContext.Provider
       value={{
@@ -22,7 +26,10 @@ export const BudgetContextProvider = ({ children }) => {
         total,
         setTotal,
         description,
-        setDescription
+        setDescription,
+        url,
+        datas,
+        setDatas
       }}
     >
       <ModalContextProvider>{children}</ModalContextProvider>
