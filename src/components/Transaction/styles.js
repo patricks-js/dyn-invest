@@ -7,8 +7,7 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 20px;
   border-radius: 5px;
-  background-color: ${({ description }) =>
-    description ? "transparent" : "white"};
+  background-color: white;
   p {
     width: 100%;
     display: inline-flex;

@@ -2,15 +2,14 @@ import { Container, Description, Value, Date } from "./styles";
 
 export const Transaction = ({
   descriptionText,
-  valueText,
+  budgetText,
   dateText,
-  descriptionColor,
   valueColor,
 }) => {
   return (
-    <Container description={descriptionColor}>
+    <Container>
       <Description>{descriptionText}</Description>
-      <Value color={valueColor}>R&#36; {valueText},00</Value>
+      <Value color={valueColor}>R&#36;{budgetText},00</Value>
       <Date>{dateText}</Date>
     </Container>
   );

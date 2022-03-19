@@ -1,15 +1,17 @@
 {
   "transaction": [
     {
-      "description": "Lucas CSGO",
-      "value": 200,
-      "date": "2003-08-09",
+      "description": "Salário",
+      "income": "1000",
+      "date": "2030-04-23",
+      "type": "income",
       "id": 1
     },
     {
-      "description": "Lucas LOL",
-      "value": -39,
-      "date": "2003-08-07",
+      "description": "Salário",
+      "income": "998",
+      "date": "2003-04-10",
+      "type": "income",
       "id": 2
     }
   ]

@@ -12,30 +12,27 @@ import { CardValue } from "../components/CardValue";
 import { Transaction } from "../components/Transaction";
 import { DescriptionTitles } from "../components/DescriptionTitles";
 import { Button } from "../components/Button";
-import { Modal } from "../components/Modal";
+import { ModalIncome } from "../components/ModalIncome";
+import { ModalExpense } from "../components/ModalExpense";
 import axios from "axios";
 
 const Home = () => {
-  const { setVisibilityModal, visibilityModal } = useContext(ModalContext);
-
+  // Contexts
   const {
-    money,
-    expense,
-    total,
-    url,
-    setResults,
-    results,
-    datas,
-    date,
-    description,
-  } = useContext(BudgetContext);
+    setVisibilityModalIncome,
+    visibilityModalIncome,
+    setVisibilityModalExpense,
+    visibilityModalExpense,
+  } = useContext(ModalContext);
+
+  const { url, response, setResponse } = useContext(BudgetContext);
 
   // Request api
 
   useEffect(async () => {
     const { data } = await axios.get(url);
-    await setResults(data);
-  }, [total]);
+    setResponse(data);
+  }, []);
 
   return (
     <Container>
@@ -45,43 +42,47 @@ const Home = () => {
       <Cards>
         <CardValue
           incomeColor
-          text="Income"
+          text="Remunerações"
           color="incomeColor"
           typeCard="income"
-          moneyValue={money}
+          //   moneyValue={money}
         />
         <CardValue
           expenseColor
-          text="Expense"
+          text="Gastos"
           typeCard="expense"
-          moneyValue={expense}
+          //   moneyValue={expense}
         />
         <CardValue
           totalValue
           text="Total"
           color="totalColor"
-          moneyValue={total}
+          //   moneyValue={total}
         />
       </Cards>
 
       <div>
-        <Button event={() => setVisibilityModal(true)}>
-          + New Transaction
+        <Button event={() => setVisibilityModalIncome(true)}>
+          + Add new Income
+        </Button>
+        <Button event={() => setVisibilityModalExpense(true)} buttonExpense>
+          + Add new Expense
         </Button>
       </div>
 
-      {visibilityModal && <Modal />}
+      {visibilityModalIncome && <ModalIncome />}
+      {visibilityModalExpense && <ModalExpense />}
 
       <DescriptionTitles />
       <TransactionContainer>
-        {results ? (
-          results.map((result) => (
+        {response ? (
+          response.map((res) => (
             <Transaction
-              key={result.id}
-              descriptionText={result.description}
-              valueText={result.value}
-              dateText={result.date}
-              valueColor={result.typeValue}
+              key={res.id}
+              descriptionText={res.description}
+              dateText={res.date}
+              budgetText={res.income || res.expense}
+              valueColor={res.type}
             />
           ))
         ) : (

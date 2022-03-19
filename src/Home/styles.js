@@ -26,6 +26,8 @@ export const Container = styled.main`
   > div:nth-child(3) {
     width: 100%;
     max-width: 1000px;
+    display: flex;
+    gap: 2rem;
   }
 `;
 

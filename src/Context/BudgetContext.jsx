@@ -1,43 +1,55 @@
+import axios from "axios";
 import { createContext, useState } from "react";
 import { ModalContextProvider } from "./ModalContext";
 
 export const BudgetContext = createContext();
 
 export const BudgetContextProvider = ({ children }) => {
-  const [money, setMoney] = useState(0);
+  // States
 
-  const [expense, setExpense] = useState(0);
+  const initialRemuneration = {
+    description: "",
+    income: "",
+    date: "",
+  };
 
-  const [total, setTotal] = useState(0);
+  const initialSpending = {
+    description: "",
+    expense: "",
+    date: "",
+  };
 
-  const [description, setDescription] = useState("");
+  const [remuneration, setRemuneration] = useState(initialRemuneration);
 
-  const [date, setDate] = useState("");
+  const [spending, setSpending] = useState(initialSpending);
 
-  const [datas, setDatas] = useState([]);
+  // Api
 
-  const [results, setResults] = useState([]);
+  const [response, setResponse] = useState([]);
+
+  const createBudget = async (datas) => {
+    try {
+      const { data } = await axios.post(url, datas);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const url = "http://localhost:5000/transaction";
 
   return (
     <BudgetContext.Provider
       value={{
-        money,
-        setMoney,
-        expense,
-        setExpense,
-        total,
-        setTotal,
-        description,
-        setDescription,
-        datas,
-        setDatas,
-        date,
-        setDate,
-        results,
-        setResults,
         url,
+        initialSpending,
+        initialRemuneration,
+        remuneration,
+        setRemuneration,
+        spending,
+        setSpending,
+        response,
+        setResponse,
+        createBudget,
       }}
     >
       <ModalContextProvider>{children}</ModalContextProvider>
