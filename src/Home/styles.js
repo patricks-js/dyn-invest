@@ -10,7 +10,7 @@ export const Container = styled.main`
   header {
     width: 100%;
     height: 25vh;
-    background-color: #2d4a22;
+    background-color: var(--color-header);
     display: flex;
     justify-content: center;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);

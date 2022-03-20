@@ -4,11 +4,12 @@ export const Container = styled.div`
   width: 22rem;
   height: 8.5rem;
 
-  background-color: ${({totalValue}) => (totalValue ? "#49AA26" : "#ffffff")};
+  background-color: ${({totalValue}) => (totalValue ? " var(--color-income)" : "var(--color-card)")};
   border-radius: 5px;
 
   position: relative;
   top: -5rem;
+  margin-bottom: -3rem;
 
   box-shadow: var(--box-shadow);
 

@@ -1,5 +1,4 @@
 // Context
-import axios from "axios";
 import { useContext } from "react";
 import { BudgetContext } from "../../Context/BudgetContext";
 import { ModalContext } from "../../Context/ModalContext";
@@ -31,9 +30,12 @@ export const ModalIncome = () => {
 
   const submit = (e) => {
     e.preventDefault();
+    // if (remuneration) {
     createBudget(remuneration);
+    // }
     setVisibilityModalIncome(false);
     setRemuneration(initialRemuneration);
+    location.reload();
   };
 
   return (

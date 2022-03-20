@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 20px;
   border-radius: 5px;
-  background-color: white;
+  background-color: var(--color-card);
   p {
     width: 100%;
     display: inline-flex;

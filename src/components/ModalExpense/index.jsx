@@ -33,6 +33,7 @@ export const ModalExpense = () => {
     createBudget(spending);
     setVisibilityModalExpense(false);
     setSpending(initialSpending);
+    location.reload()
   }
 
   return (

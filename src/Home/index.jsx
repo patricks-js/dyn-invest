@@ -1,11 +1,10 @@
 // Context
-import { useContext, useEffect } from "react";
+import { useContext, useState } from "react";
 import { BudgetContext } from "../Context/BudgetContext";
 import { ModalContext } from "../Context/ModalContext";
 
 // Styles and Assets
 import { Container, Cards, TransactionContainer } from "./styles";
-import logo from "../assets/images/logo.svg";
 
 // Components
 import { CardValue } from "../components/CardValue";
@@ -14,9 +13,9 @@ import { DescriptionTitles } from "../components/DescriptionTitles";
 import { Button } from "../components/Button";
 import { ModalIncome } from "../components/ModalIncome";
 import { ModalExpense } from "../components/ModalExpense";
-import axios from "axios";
+import { Header } from "../components/Header";
 
-const Home = () => {
+const Home = ({ toggleTheme }) => {
   // ! Contexts
   const {
     setVisibilityModalIncome,
@@ -25,14 +24,11 @@ const Home = () => {
     visibilityModalExpense,
   } = useContext(ModalContext);
 
-  const { response, setResponse, income, expense, total } =
-    useContext(BudgetContext);
+  const { response, income, expense, total } = useContext(BudgetContext);
 
   return (
     <Container>
-      <header>
-        <img src={logo} alt="" />
-      </header>
+      <Header toggleTheme={toggleTheme} />
       <Cards>
         <CardValue
           incomeColor
@@ -57,10 +53,10 @@ const Home = () => {
 
       <div>
         <Button event={() => setVisibilityModalIncome(true)}>
-          + Add nova remuneração
+          + Nova remuneração
         </Button>
         <Button event={() => setVisibilityModalExpense(true)} buttonExpense>
-          + Add nova despensa
+          + Nova despensa
         </Button>
       </div>
 

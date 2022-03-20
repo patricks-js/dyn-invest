@@ -5,8 +5,8 @@ import { ModalContextProvider } from "./ModalContext";
 export const BudgetContext = createContext();
 
 export const BudgetContextProvider = ({ children }) => {
+    
   // States
-
   const initialRemuneration = {
     description: "",
     income: "",

@@ -1,3 +1,39 @@
 {
-  "transaction": []
+  "transaction": [
+    {
+      "description": "Salário",
+      "income": 785,
+      "date": "2022-03-18",
+      "type": "income",
+      "id": 1
+    },
+    {
+      "description": "Internet",
+      "expense": 45,
+      "date": "2021-08-03",
+      "type": "expense",
+      "id": 2
+    },
+    {
+      "description": "Conta de Luz",
+      "expense": 70,
+      "date": "2022-04-12",
+      "type": "expense",
+      "id": 3
+    },
+    {
+      "description": "Serviço",
+      "income": 1000,
+      "date": "2021-08-16",
+      "type": "income",
+      "id": 4
+    },
+    {
+      "description": "Conta de água ",
+      "expense": 230,
+      "date": "2003-05-22",
+      "type": "expense",
+      "id": 5
+    }
+  ]
 }
