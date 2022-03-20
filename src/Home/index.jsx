@@ -17,7 +17,7 @@ import { ModalExpense } from "../components/ModalExpense";
 import axios from "axios";
 
 const Home = () => {
-  // Contexts
+  // ! Contexts
   const {
     setVisibilityModalIncome,
     visibilityModalIncome,
@@ -25,14 +25,8 @@ const Home = () => {
     visibilityModalExpense,
   } = useContext(ModalContext);
 
-  const { url, response, setResponse } = useContext(BudgetContext);
-
-  // Request api
-
-  useEffect(async () => {
-    const { data } = await axios.get(url);
-    setResponse(data);
-  }, []);
+  const { response, setResponse, income, expense, total } =
+    useContext(BudgetContext);
 
   return (
     <Container>
@@ -45,28 +39,28 @@ const Home = () => {
           text="Remunerações"
           color="incomeColor"
           typeCard="income"
-          //   moneyValue={money}
+          moneyValue={income}
         />
         <CardValue
           expenseColor
           text="Gastos"
           typeCard="expense"
-          //   moneyValue={expense}
+          moneyValue={expense}
         />
         <CardValue
           totalValue
           text="Total"
           color="totalColor"
-          //   moneyValue={total}
+          moneyValue={total}
         />
       </Cards>
 
       <div>
         <Button event={() => setVisibilityModalIncome(true)}>
-          + Add new Income
+          + Add nova remuneração
         </Button>
         <Button event={() => setVisibilityModalExpense(true)} buttonExpense>
-          + Add new Expense
+          + Add nova despensa
         </Button>
       </div>
 
@@ -75,7 +69,7 @@ const Home = () => {
 
       <DescriptionTitles />
       <TransactionContainer>
-        {response ? (
+        {response[0] ? (
           response.map((res) => (
             <Transaction
               key={res.id}

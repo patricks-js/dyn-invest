@@ -15,16 +15,17 @@ export const ModalIncome = () => {
   const { setRemuneration, remuneration, initialRemuneration, createBudget } =
     useContext(BudgetContext);
 
+  const handleInfos = (e) =>
+    setRemuneration({
+      ...remuneration,
+      [e.target.name]: e.target.value,
+      type: "income",
+    });
+
   const handleDatas = (e) =>
     setRemuneration({
       ...remuneration,
-    //   get v() {
-    //     if (e.target.name === "income") {
-    //       return Number(e.target.value);
-    //     }
-    //     return e.target.value;
-    //     //   [e.target.name]: e.target.value,
-    //   },
+      [e.target.name]: Number(e.target.value),
       type: "income",
     });
 
@@ -42,7 +43,7 @@ export const ModalIncome = () => {
         <Input
           placeholder={"Descrição"}
           type="text"
-          event={(e) => handleDatas(e)}
+          event={(e) => handleInfos(e)}
           identifier="description"
           value={remuneration.description}
         />
@@ -56,7 +57,7 @@ export const ModalIncome = () => {
         <Input
           placeholder={"Data do recebimento"}
           type="date"
-          event={(e) => handleDatas(e)}
+          event={(e) => handleInfos(e)}
           identifier="date"
           value={remuneration.date}
         />

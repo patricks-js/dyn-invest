@@ -3,9 +3,9 @@ import { Container } from './styles';
 export const DescriptionTitles = () => {
   return (
       <Container >
-          <p>Description</p>
-          <p>Value</p>
-          <p>Date</p>
+          <p>Descrição</p>
+          <p>Valor</p>
+          <p>Data</p>
       </Container>
   )
 }

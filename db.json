@@ -1,18 +1,3 @@
 {
-  "transaction": [
-    {
-      "description": "Salário",
-      "income": "1000",
-      "date": "2030-04-23",
-      "type": "income",
-      "id": 1
-    },
-    {
-      "description": "Salário",
-      "income": "998",
-      "date": "2003-04-10",
-      "type": "income",
-      "id": 2
-    }
-  ]
+  "transaction": []
 }

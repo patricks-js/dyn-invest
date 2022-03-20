@@ -14,10 +14,17 @@ export const ModalExpense = () => {
   const { setSpending, spending, initialSpending, createBudget } =
     useContext(BudgetContext);
 
-  const handleDatas = (e) =>
+  const handleInfos = (e) =>
     setSpending({
       ...spending,
       [e.target.name]: e.target.value,
+      type: "expense",
+    });
+
+  const handleDatas = (e) =>
+    setSpending({
+      ...spending,
+      [e.target.name]: Number(e.target.value),
       type: "expense",
     });
 
@@ -35,7 +42,7 @@ export const ModalExpense = () => {
         <Input
           placeholder={"Descrição"}
           type="text"
-          event={(e) => handleDatas(e)}
+          event={(e) => handleInfos(e)}
           identifier="description"
           value={spending.description}
         />
@@ -49,7 +56,7 @@ export const ModalExpense = () => {
         <Input
           placeholder={"Data do pagamento"}
           type="date"
-          event={(e) => handleDatas(e)}
+          event={(e) => handleInfos(e)}
           identifier="date"
           value={spending.date}
         />

@@ -18,7 +18,7 @@ export const CardValue = ({
         return <p> R$ <span>{moneyValue}</span></p>
 
       case "expense":
-        return <p> R$ <span>{moneyValue}</span></p>
+        return <p> R$ - <span>{moneyValue}</span></p>
 
       default:
         return <p>R$ <span>{moneyValue}</span></p>

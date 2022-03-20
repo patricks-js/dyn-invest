@@ -9,7 +9,7 @@ export const Transaction = ({
   return (
     <Container>
       <Description>{descriptionText}</Description>
-      <Value color={valueColor}>R&#36;{budgetText},00</Value>
+      <Value color={valueColor}>R&#36; {budgetText},00</Value>
       <Date>{dateText}</Date>
     </Container>
   );
